@@ -28,9 +28,9 @@ function getBoard(rows: number, columns: number): string[][] {
         const row = [];
         for (let c = 0; c < columns; c++) {
             if ((c + r) % 2 === 0) {
-                row.push('white');
+                row.push('red');
             } else {
-                row.push('black');
+                row.push('blue');
             }
         }
         board.push(row);
