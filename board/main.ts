@@ -14,9 +14,7 @@ function draw(board: string[][], cellWidth: number, outputPath: string): void {
     for (let y = 0; y < board.length; y++) {
         for (let x = 0; x < board[0].length; x++) {
             ctx.fillStyle = board[y][x];
-            ctx.beginPath();
-            ctx.arc(x * cellWidth + cellWidth / 2, y * cellWidth + cellWidth / 2, cellWidth / 2, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.fillRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
         }
     }
 
