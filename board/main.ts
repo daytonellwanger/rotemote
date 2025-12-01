@@ -22,10 +22,21 @@ function draw(board: string[][], cellWidth: number, outputPath: string): void {
     fs.writeFileSync(outputPath, buffer);
 }
 
-const board = [
-    ['white', 'black', 'white', 'black'],
-    ['black', 'white', 'black', 'white'],
-    ['white', 'black', 'white', 'black'],
-    ['black', 'white', 'black', 'white'],
-];
+function getBoard(rows: number, columns: number): string[][] {
+    const board = [];
+    for (let r = 0; r < rows; r++) {
+        const row = [];
+        for (let c = 0; c < columns; c++) {
+            if ((c + r) % 2 === 0) {
+                row.push('white');
+            } else {
+                row.push('black');
+            }
+        }
+        board.push(row);
+    }
+    return board;
+}
+
+const board = getBoard(8, 8);
 draw(board, 100, 'board.png');
