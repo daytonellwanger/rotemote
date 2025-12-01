@@ -29,16 +29,26 @@ function getRandomColor(): string {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
+function getGray(percentWhite: number): string {
+    if (percentWhite > 1) percentWhite = 1;
+    if (percentWhite < 0) percentWhite = 0;
+
+    const value = Math.floor(percentWhite * 255);
+    return `rgb(${value}, ${value}, ${value})`;
+}
+
 function getBoard(rows: number, columns: number): string[][] {
     const board = [];
+    let percentWhite = 0;
     for (let r = 0; r < rows; r++) {
         const row = [];
         for (let c = 0; c < columns; c++) {
             if ((c + r) % 2 === 0) {
                 row.push('white');
             } else {
-                row.push(getRandomColor());
+                row.push(getGray(percentWhite));
             }
+            percentWhite += .012;
         }
         board.push(row);
     }
