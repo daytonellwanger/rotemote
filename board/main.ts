@@ -27,8 +27,10 @@ function getBoard(rows: number, columns: number): string[][] {
     for (let r = 0; r < rows; r++) {
         const row = [];
         for (let c = 0; c < columns; c++) {
-            if ((c + r) % 2 === 0) {
+            if ((c + r) % 3 === 0) {
                 row.push('red');
+            } else if ((c + r) % 3 === 1) {
+                row.push('white');
             } else {
                 row.push('blue');
             }
