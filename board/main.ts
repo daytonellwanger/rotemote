@@ -1,0 +1,31 @@
+import { createCanvas } from 'canvas';
+import fs from 'fs';
+
+function draw(board: string[][], cellWidth: number, outputPath: string): void {
+    const height = board.length * cellWidth;
+    const width = board[0].length * cellWidth;
+
+    const canvas = createCanvas(width, height);
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, width, height);
+
+    for (let y = 0; y < board.length; y++) {
+        for (let x = 0; x < board[0].length; x++) {
+            ctx.fillStyle = board[y][x];
+            ctx.fillRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
+        }
+    }
+
+    const buffer = canvas.toBuffer('image/png');
+    fs.writeFileSync(outputPath, buffer);
+}
+
+const board = [
+    ['white', 'black', 'white', 'black'],
+    ['black', 'white', 'black', 'white'],
+    ['white', 'black', 'white', 'black'],
+    ['black', 'white', 'black', 'white'],
+];
+draw(board, 100, 'board.png');
