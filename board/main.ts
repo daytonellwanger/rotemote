@@ -22,17 +22,22 @@ function draw(board: string[][], cellWidth: number, outputPath: string): void {
     fs.writeFileSync(outputPath, buffer);
 }
 
+function getRandomColor(): string {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 function getBoard(rows: number, columns: number): string[][] {
     const board = [];
     for (let r = 0; r < rows; r++) {
         const row = [];
         for (let c = 0; c < columns; c++) {
-            if ((c + r) % 3 === 0) {
-                row.push('red');
-            } else if ((c + r) % 3 === 1) {
+            if ((c + r) % 2 === 0) {
                 row.push('white');
             } else {
-                row.push('blue');
+                row.push(getRandomColor());
             }
         }
         board.push(row);
