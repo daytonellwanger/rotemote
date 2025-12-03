@@ -1,0 +1,50 @@
+import { createCanvas } from 'canvas';
+import fs from 'fs';
+
+function draw(board: string[][], cellWidth: number): void {
+    const height = board.length * cellWidth;
+    const width = board[0].length * cellWidth;
+
+    const canvas = createCanvas(width, height);
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, width, height);
+
+    const xys = [];
+    for (let y = 0; y < board.length; y++) {
+        for (let x = 0; x < board[0].length; x++) {
+            xys.push({ x, y });
+        }
+    }
+
+    let imageNum = 1;
+    while (xys.length > 0) {
+        const index = Math.floor(Math.random() * xys.length);
+        const { x, y } = xys.splice(index, 1)[0];
+        ctx.fillStyle = board[y][x];
+        ctx.fillRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
+        const buffer = canvas.toBuffer('image/png');
+        fs.writeFileSync(`images/board_${imageNum}.png`, buffer);
+        imageNum++;
+    }
+}
+
+function getBoard(rows: number, columns: number): string[][] {
+    const board = [];
+    for (let r = 0; r < rows; r++) {
+        const row = [];
+        for (let c = 0; c < columns; c++) {
+            if ((c + r) % 2 === 0) {
+                row.push('white');
+            } else {
+                row.push('black');
+            }
+        }
+        board.push(row);
+    }
+    return board;
+}
+
+const board = getBoard(16, 16);
+draw(board, 100);
