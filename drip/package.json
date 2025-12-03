@@ -1,7 +1,8 @@
 {
     "type": "module",
     "dependencies": {
-        "canvas": "^3.2.0"
+        "canvas": "^3.2.0",
+        "random": "^5.4.1"
     },
     "devDependencies": {
         "@types/node": "^24.9.2"

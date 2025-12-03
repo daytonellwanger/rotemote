@@ -1,5 +1,6 @@
 import { createCanvas } from 'canvas';
 import fs from 'fs';
+import random from 'random';
 
 class Pixel {
     r: number;
@@ -43,10 +44,11 @@ function getRandomPixel(): Pixel {
 }
 
 const MAX_DIFF = 20;
+const normalDistrubution = random.normal(0, 0.25);
 function generatePixelFromBase(basePixel: Pixel, damping = 0): Pixel {
-    const r = Math.min(255, Math.max(0, basePixel.r + (Math.random() - 0.5 - damping) * MAX_DIFF));
-    const g = Math.min(255, Math.max(0, basePixel.g + (Math.random() - 0.5 - damping) * MAX_DIFF));
-    const b = Math.min(255, Math.max(0, basePixel.b + (Math.random() - 0.5 - damping) * MAX_DIFF));
+    const r = Math.min(255, Math.max(0, basePixel.r + (normalDistrubution() - damping) * MAX_DIFF));
+    const g = Math.min(255, Math.max(0, basePixel.g + (normalDistrubution() - damping) * MAX_DIFF));
+    const b = Math.min(255, Math.max(0, basePixel.b + (normalDistrubution() - damping) * MAX_DIFF));
     return new Pixel(r, g, b);
 }
 
@@ -97,7 +99,7 @@ function getFirstRow(columns: number): Pixel[] {
     return row;
 }
 
-const DAMPING = 0.015;
+const DAMPING = 0.009;
 function generateRow(prevRow: Pixel[]): Pixel[] {
     const row: Pixel[] = [];
 
