@@ -82,6 +82,7 @@ function getAveragePixel(pixels: Pixel[]): Pixel {
     return new Pixel(avgR, avgG, avgB);
 }
 
+const FIRST_ROW_DAMPING = 0.03;
 function getFirstRow(columns: number): Pixel[] {
     const row: Pixel[] = [];
 
@@ -90,7 +91,7 @@ function getFirstRow(columns: number): Pixel[] {
     for (let i = 1; i < columns; i++) {
         const parents = getParents(row, i - 1, PARENT_DISTANCE * 2);
         const avgPixel = getAveragePixel(parents);
-        row.push(generatePixelFromBase(avgPixel));
+        row.push(generatePixelFromBase(avgPixel, FIRST_ROW_DAMPING));
     }
 
     return row;
