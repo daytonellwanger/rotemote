@@ -1,9 +1,10 @@
 import { createCanvas, CanvasRenderingContext2D } from 'canvas';
 import fs from 'fs';
+import random from 'random';
 
-const TRUNK_WIDTH_RATIO = 0.2;
-const BRANCH_RATIO = 0.7;
-const BRANCH_ANGLE = Math.PI / 6;
+const TRUNK_WIDTH_RATIO = random.normal(0.15, 0.02);
+const BRANCH_RATIO = random.normal(0.7, 0.05);
+const BRANCH_ANGLE = random.normal(Math.PI / 6, 0.1);
 const SMALLEST_TREE = 3;
 
 function drawTree(ctx: CanvasRenderingContext2D, size: number): void {
@@ -11,21 +12,21 @@ function drawTree(ctx: CanvasRenderingContext2D, size: number): void {
         return;
     }
 
-    const trunkWidth = size * TRUNK_WIDTH_RATIO;
+    const trunkWidth = size * TRUNK_WIDTH_RATIO();
     ctx.fillStyle = 'black';
     ctx.fillRect(0 - trunkWidth / 2, 0, trunkWidth, size);
 
-    const branchSize = size * BRANCH_RATIO;
+    const branchSize = size * BRANCH_RATIO();
 
     ctx.translate(0, size);
 
     ctx.save();
-    ctx.rotate(-BRANCH_ANGLE);
+    ctx.rotate(-BRANCH_ANGLE());
     drawTree(ctx, branchSize);
     ctx.restore();
 
     ctx.save();
-    ctx.rotate(BRANCH_ANGLE);
+    ctx.rotate(BRANCH_ANGLE());
     drawTree(ctx, branchSize);
     ctx.restore();
 }
