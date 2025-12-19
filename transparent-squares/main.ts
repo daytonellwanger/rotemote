@@ -9,7 +9,7 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, width, height);
 
-const colors = ['#FF443366', '#44663366', '#44448866'];
+const colors = ['#FF443344', '#44663344', '#44448844'];
 const squareOffset = 10;
 const squareWidth = 100;
 const squareHeight = 100;
