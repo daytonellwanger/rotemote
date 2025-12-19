@@ -9,30 +9,41 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, width, height);
 
-ctx.fillStyle = '#FF443366';
-
+const colors = ['#FF443366', '#44663366', '#44448866'];
+const squareOffset = 10;
 const squareWidth = 100;
 const squareHeight = 100;
-for (let i = 0; i < 5; i++) {
-    const x = 5 + i * 10;
-    const y = 290 + i * 10;
+const stackHeight = 5;
+
+let xStart = -squareWidth;
+let yStart = -squareHeight;
+let x = xStart;
+let y = yStart;
+
+let idx = 0;
+while (true) {
+    const color = colors[Math.floor(idx / stackHeight) % colors.length];
+
+    ctx.fillStyle = color;
     ctx.fillRect(x, y, squareWidth, squareHeight);
-}
 
-ctx.fillStyle = '#44663366';
+    idx++;
 
-for (let i = 0; i < 5; i++) {
-    const x = 155 + i * 10;
-    const y = 290 + i * 10;
-    ctx.fillRect(x, y, squareWidth, squareHeight);
-}
+    if (y > height) {
+        break;
+    }
 
-ctx.fillStyle = '#44448866';
+    if (x + squareWidth > width && idx % stackHeight === 0) {
+        x = xStart;
+        yStart += squareHeight + squareOffset * (stackHeight - 3);
+    } else {
+        x += squareOffset;
+        y += squareOffset;
+    }
 
-for (let i = 0; i < 5; i++) {
-    const x = 305 + i * 10;
-    const y = 290 + i * 10;
-    ctx.fillRect(x, y, squareWidth, squareHeight);
+    if (idx % stackHeight === 0) {
+        y = yStart;
+    }
 }
 
 const buffer = canvas.toBuffer('image/png');
