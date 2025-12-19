@@ -14,7 +14,23 @@ ctx.fillStyle = '#FF443366';
 const squareWidth = 100;
 const squareHeight = 100;
 for (let i = 0; i < 5; i++) {
-    const x = 120 + i * 10;
+    const x = 5 + i * 10;
+    const y = 290 + i * 10;
+    ctx.fillRect(x, y, squareWidth, squareHeight);
+}
+
+ctx.fillStyle = '#44663366';
+
+for (let i = 0; i < 5; i++) {
+    const x = 155 + i * 10;
+    const y = 290 + i * 10;
+    ctx.fillRect(x, y, squareWidth, squareHeight);
+}
+
+ctx.fillStyle = '#44448866';
+
+for (let i = 0; i < 5; i++) {
+    const x = 305 + i * 10;
     const y = 290 + i * 10;
     ctx.fillRect(x, y, squareWidth, squareHeight);
 }
