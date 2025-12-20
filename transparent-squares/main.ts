@@ -20,11 +20,14 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, width, height);
 
-for (let i = 0; i < 5500; i++) {
-    const randX = Math.floor(Math.random() * (width + 100)) - 100;
-    const randY = Math.floor(Math.random() * (height + 100)) - 100;
-    const randWidth = Math.floor(Math.random() * 50) + 10;
-    const randHeight = Math.floor(Math.random() * 50) + 10;
+const randomX = random.normal(width / 2, width / 2);
+const randomY = random.normal(height / 2, height / 2);
+const randomSize = random.normal(50, 20);
+for (let i = 0; i < 7500; i++) {
+    const randX = randomX();
+    const randY = randomY();
+    const randWidth = randomSize();
+    const randHeight = randomSize();
     ctx.fillStyle = getRandomColor();
     ctx.fillRect(randX, randY, randWidth, randHeight);
 }
