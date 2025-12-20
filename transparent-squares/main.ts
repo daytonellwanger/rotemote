@@ -1,5 +1,16 @@
 import { createCanvas } from 'canvas';
 import fs from 'fs';
+import random from 'random';
+
+const randomR = random.uniform(0, 255);
+const randomG = random.normal(0, 255);
+const randomB = random.normal(0, 255);
+function getRandomColor() {
+    const r = Math.min(255, Math.max(0, Math.floor(randomR())));
+    const g = Math.min(255, Math.max(0, Math.floor(randomG())));
+    const b = Math.min(255, Math.max(0, Math.floor(randomB())));
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}44`;
+}
 
 const height = 800;
 const width = 450;
@@ -9,7 +20,6 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, width, height);
 
-const colors = ['#FF443344', '#44663344', '#44448844'];
 const squareOffset = 10;
 const squareWidth = 100;
 const squareHeight = 100;
@@ -19,10 +29,9 @@ let xStart = -squareWidth;
 let yStart = -squareHeight;
 let x = xStart;
 let y = yStart;
-
+let color = getRandomColor();
 let idx = 0;
 while (true) {
-    const color = colors[Math.floor(idx / stackHeight) % colors.length];
 
     ctx.fillStyle = color;
     ctx.fillRect(x, y, squareWidth, squareHeight);
@@ -43,6 +52,7 @@ while (true) {
 
     if (idx % stackHeight === 0) {
         y = yStart;
+        color = getRandomColor();
     }
 }
 
