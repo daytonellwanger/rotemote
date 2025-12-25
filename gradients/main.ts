@@ -42,9 +42,6 @@ const width = 500;
 const canvas = createCanvas(width, height);
 const ctx = canvas.getContext('2d');
 
-const startColor: RGB = { r: 15, g: 25, b: 60 };
-const endColor: RGB = { r: 90, g: 160, b: 200 };
-
 for (let y = 0; y < height; y++) {
     const color = getColor(y / height);
     ctx.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`;
