@@ -26,6 +26,7 @@ const stops: { p: number; color: RGB }[] = [
 ];
 
 function getColor(p: number): RGB {
+    p = Math.min(1, Math.max(0, Math.pow(p, 1.6))); // bias toward bottom
     for (let i = 0; i < stops.length - 1; i++) {
         const start = stops[i];
         const end = stops[i + 1];
