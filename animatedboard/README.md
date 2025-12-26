@@ -7,3 +7,5 @@ These images can be stitched into a video with ffmpeg, like this:
 ```
 ffmpeg -framerate 64 -i board_%d.png -c:v libx264 -pix_fmt yuv420p output.mp4
 ```
+
+![Example](example.gif)

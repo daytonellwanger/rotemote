@@ -26,6 +26,8 @@ tsx main.ts
 
 ### animatedboard
 
+![Example](./animatedboard/example.gif)
+
 ### drip
 
 ![Example](./drip/example.png)
