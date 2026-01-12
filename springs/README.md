@@ -1,4 +1,4 @@
-# Srpings
+# Springs
 
 Creates a series of images in the `images` folder (make sure to create this before running!) of multiple springs.
 
