@@ -52,6 +52,10 @@ tsx main.ts
 
 ![Beach example](./gradients/beach.png)
 
+### gradient-between-gradients
+
+![Example](./gradient-between-gradients/example.gif)
+
 ### transparent-squares-gradient
 
 ![Example](./transparent-squares-gradient/example.png)
