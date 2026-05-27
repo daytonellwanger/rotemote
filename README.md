@@ -62,6 +62,10 @@ tsx main.ts
 
 ![Example](./transparent-squares-gradient/example.png)
 
+### spline-gradient
+
+![Example](./spline-gradient/splines.png)
+
 ### clouds
 
 ![Example](./clouds/example.png)
