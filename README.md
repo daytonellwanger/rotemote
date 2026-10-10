@@ -86,3 +86,8 @@ tsx main.ts
 ### flow-field
 
 ![Example](./flow-field/example.png)
+
+### square-tree
+
+![Example](./square-tree/example.png)
+![Example](./square-tree/example-500.png)
